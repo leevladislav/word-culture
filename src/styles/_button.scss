@@ -1,0 +1,19 @@
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.button {
+  width: 100%;
+  max-width: 100px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-primary {
+  background-color: $bg-primary;
+  color: $color-light;
+}

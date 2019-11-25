@@ -1,0 +1,30 @@
+.header {
+  .header-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 576px) {
+      align-items: flex-start;
+    }
+
+    .header-mode {
+      mat-slide-toggle {
+        margin: 20px;
+      }
+    }
+
+    .header-buttons {
+
+      @media screen and (max-width: 576px) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      a,
+      button {
+        margin: 20px;
+      }
+    }
+  }
+}

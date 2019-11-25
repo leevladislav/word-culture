@@ -1,0 +1,17 @@
+.my-words-layout {
+  display: flex;
+  flex-wrap: wrap;
+
+  .layout-item {
+    margin: 10px;
+    width: calc(33% - 20px);
+
+    @media screen and (max-width: 991px) {
+      width: calc(50% - 20px);
+    }
+
+    @media screen and (max-width: 568px) {
+      width: calc(100% - 20px);
+    }
+  }
+}

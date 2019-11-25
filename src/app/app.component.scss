@@ -1,0 +1,18 @@
+.app-root-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: #ffffff;
+  filter: brightness(1);
+  transition: filter 1s;
+
+  &.dark-theme {
+    filter: brightness(0.8);
+    transition: filter 1s;
+  }
+
+  ::ng-deep app-my-words {
+    flex-grow: 1;
+  }
+}

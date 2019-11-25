@@ -1,0 +1,35 @@
+.main-modal {
+  min-width: 300px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 500px !important;
+  }
+
+  .mat-dialog-container {
+    padding: 0;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 40px;
+    position: relative;
+    color: $color-light;
+
+    button {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .dialog-content {
+    padding: 24px;
+  }
+}
+
+
+
+

@@ -1,0 +1,39 @@
+<div class="header">
+  <div class="header-layout">
+    <div class="layout-item header-mode">
+      <mat-slide-toggle [(ngModel)]="checked" (change)="changeTheme()">
+        {{checked ? 'Dark mode' : 'Light mode'}}
+      </mat-slide-toggle>
+    </div>
+
+    <div class="layout-item header-buttons">
+      <a mat-raised-button
+         *ngIf="wordResult?.word"
+         matTooltip="Translate on Google"
+         href="https://translate.google.com/?hl=ru#view=home&op=translate&sl=en&tl=ru&text={{wordResult?.word}}"
+         target="_blank">
+        <i class="material-icons">g_translate</i>
+      </a>
+
+      <button mat-raised-button
+              (click)="addWord($event)"
+              matTooltip="Add new word">
+        <i class="material-icons">add</i>
+      </button>
+
+      <button mat-raised-button
+              (click)="getRandomWord()"
+              matTooltip="Get random word">
+        <i class="material-icons">cached</i>
+      </button>
+
+      <button *ngIf="displayWordListBtn"
+              mat-raised-button
+              matTooltip="My words"
+              [routerLink]="['/my-words']"
+              routerLinkActive="active">
+        <i class="material-icons">storage</i>
+      </button>
+    </div>
+  </div>
+</div>

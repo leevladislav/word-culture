@@ -1,0 +1,22 @@
+<div class="bg-primary modal-header">
+  <span class="modal-header-title">Confirm</span>
+
+  <button mat-icon-button aria-label="Close modal" (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <p>Are you sure you want to {{data.type}}?</p>
+  <mat-dialog-actions align="center">
+    <button mat-raised-button class="button" [mat-dialog-close]="false">
+      Cancel
+    </button>
+
+    <button mat-raised-button
+            class="button-primary"
+            [mat-dialog-close]="true">
+      {{data.buttonText ? data.buttonText : 'Yes'}}
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,50 @@
+<div class="bg-primary modal-header">
+  <span class="modal-header-title">{{data.type}}</span>
+
+  <button mat-icon-button aria-label="Close modal" (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="addWordForm" (submit)="addWorld($event)">
+    <mat-form-field>
+      <input class="word" id="word" matInput placeholder="word (love)" formControlName="word">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="type" id="type" matInput placeholder="type (noun)" formControlName="type">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="pronunciation" id="pronunciation" matInput
+             placeholder="pronunciation (ləv)" formControlName="pronunciation">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="definition" id="definition" matInput
+             placeholder="definition (a strong feeling of affection.)" formControlName="definition">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="example" id="example" matInput
+             placeholder="example (babies fill parents with intense feelings of love)" formControlName="example">
+    </mat-form-field>
+
+    <mat-dialog-actions align="center">
+      <button mat-raised-button class="button" [mat-dialog-close]="false">
+        Cancel
+      </button>
+
+      <button mat-raised-button
+              class="submit button-primary"
+              type="submit"
+              [disabled]="addWordForm.invalid" [mat-dialog-close]="true">
+        {{data.buttonText ? data.buttonText : 'Save'}}
+      </button>
+    </mat-dialog-actions>
+  </form>
+
+</div>
+
