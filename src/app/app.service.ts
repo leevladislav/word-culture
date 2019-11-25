@@ -39,4 +39,14 @@ export class AppService {
 
     return;
   }
+
+  removeWordFromLocal(wordId) {
+    this.getWordFromLocal();
+
+    const currentWord = this.allWords.find(word => word.id === wordId);
+    const currentWordIndex = this.allWords.indexOf(currentWord);
+    this.allWords.splice(currentWordIndex, 1);
+
+    localStorage.setItem('localWords', JSON.stringify(this.allWords));
+  }
 }

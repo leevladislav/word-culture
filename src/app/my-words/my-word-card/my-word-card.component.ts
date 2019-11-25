@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ConfirmationComponent} from '../../shared/modal/confirmation/confirmation.component';
 import {Subscription} from 'rxjs';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-my-word-card',
@@ -14,12 +15,15 @@ export class MyWordCardComponent implements OnInit, OnDestroy {
     type: string,
     pronunciation: string,
     definition: string,
-    example: string
+    example: string,
+    id: string
   };
   private subscriptions: Subscription[] = [];
   modalSubscribe: any;
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    public appService: AppService) {
   }
 
   ngOnInit() {
@@ -33,17 +37,14 @@ export class MyWordCardComponent implements OnInit, OnDestroy {
 
   editWord(event) {
     event.preventDefault();
-
     console.log('editWord');
   }
 
-  deleteWord(event) {
+  deleteWord(event, wordId) {
     event.preventDefault();
     if (this.modalSubscribe) {
       this.modalSubscribe.unsubscribe();
     }
-
-    console.log('deleteWord');
 
     const dialogRef = this.dialog.open(ConfirmationComponent, {
       data: {
@@ -56,7 +57,7 @@ export class MyWordCardComponent implements OnInit, OnDestroy {
 
     this.modalSubscribe = dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        console.log('res', res);
+        this.appService.removeWordFromLocal(wordId);
       }
     });
     this.subscriptions.push(this.modalSubscribe);
