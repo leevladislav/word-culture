@@ -14,6 +14,7 @@ export class MyWordsComponent implements OnInit {
 
   ngOnInit() {
     this.appService.getWordFromLocal();
+    this.appService.setCurrentWordKey();
 
     this.appService.currentStorage$.subscribe((res) => {
       this.words = res;

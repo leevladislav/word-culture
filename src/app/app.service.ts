@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  public currentKey = 0;
+  public currentWordKey = 0;
   public currentStorage$ = new BehaviorSubject([]);
   public allWords = [];
+  public allWordKeys = [];
+  public maxWordKey;
 
   constructor() {
   }
@@ -17,22 +19,45 @@ export class AppService {
 
     if (savedWords) {
       this.allWords = JSON.parse(savedWords);
-      this.currentKey = this.allWords.length;
       this.currentStorage$.next(this.allWords);
     } else {
       this.allWords = [];
     }
   }
 
+  setCurrentWordKey() {
+    if (this.allWords.length) {
+      this.allWordKeys = [];
+
+      this.allWords.forEach((item) => {
+        this.allWordKeys.push(item.id);
+      });
+
+      this.maxWordKey = Math.max.apply(null, this.allWordKeys);
+      this.currentWordKey = this.maxWordKey;
+    } else {
+      this.currentWordKey = 0;
+    }
+  }
+
+  checkCurrentWordKey() {
+    if (this.currentWordKey === this.maxWordKey) {
+      this.currentWordKey++;
+    } else {
+      this.currentWordKey = this.allWords.length;
+    }
+  }
+
   saveWordToLocal(data) {
     if (data) {
       this.getWordFromLocal();
+      this.setCurrentWordKey();
+      this.checkCurrentWordKey();
 
-      data.id = this.currentKey;
+      data.id = this.currentWordKey;
+
       this.allWords.push(data);
       this.currentStorage$.next(this.allWords);
-
-      this.currentKey++;
 
       localStorage.setItem('localWords', JSON.stringify(this.allWords));
     }
