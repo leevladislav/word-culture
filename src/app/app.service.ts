@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AppService {
   public currentWordKey = 0;
   public currentStorage$ = new BehaviorSubject([]);
@@ -11,7 +13,7 @@ export class AppService {
   public allWordKeys = [];
   public maxWordKey;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   getWordFromLocal() {
@@ -72,6 +74,11 @@ export class AppService {
     const currentWordIndex = this.allWords.indexOf(currentWord);
     this.allWords.splice(currentWordIndex, 1);
 
+    this.currentStorage$.next(this.allWords);
     localStorage.setItem('localWords', JSON.stringify(this.allWords));
+
+    if (!this.allWords.length) {
+      this.router.navigate(['home']).then(() => false);
+    }
   }
 }

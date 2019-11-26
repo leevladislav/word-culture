@@ -1,27 +1,27 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {HomeModule} from './home/home.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+
+import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
-import {MyWordsModule} from './my-words/my-words.module';
+import {MyWordsGuard} from './my-words/my-words.guard';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule,
     BrowserAnimationsModule,
-    SharedModule,
-    MyWordsModule
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    MyWordsGuard
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

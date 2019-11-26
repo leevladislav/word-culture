@@ -28,7 +28,7 @@
           <i class="material-icons">cached</i>
         </button>
 
-        <button *ngIf="displayWordListBtn"
+        <button *ngIf="checkLocalStorage"
                 mat-raised-button
                 matTooltip="My words"
                 [routerLink]="['/my-words']"

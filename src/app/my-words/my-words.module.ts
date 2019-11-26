@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MyWordsComponent} from './my-words.component';
-import { MyWordCardComponent } from './my-word-card/my-word-card.component';
-import {SharedModule} from '../shared/shared.module';
 
+import {MyWordsRoutingModule} from './my-words-routing.module';
+import {MyWordsComponent} from './my-words.component';
+import {MyWordCardComponent} from './my-word-card/my-word-card.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +13,10 @@ import {SharedModule} from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    MyWordsRoutingModule,
     SharedModule
   ]
 })
+
 export class MyWordsModule {
 }

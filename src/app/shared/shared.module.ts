@@ -7,7 +7,7 @@ import {HeaderComponent} from './header/header.component';
 import {AddWordComponent} from './modal/add-word/add-word.component';
 import {MatCardModule} from '@angular/material';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {AppRoutingModule} from '../app-routing.module';
+import {RouterModule} from '@angular/router';
 import {BtnBackComponent} from './btn-back/btn-back.component';
 import {ConfirmationComponent} from './modal/confirmation/confirmation.component';
 
@@ -26,7 +26,7 @@ import {ConfirmationComponent} from './modal/confirmation/confirmation.component
     HttpClientModule,
     MatCardModule,
     MatTooltipModule,
-    AppRoutingModule
+    RouterModule
   ],
   exports: [
     FormsModule,

@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     word: any
   };
   modalSubscribe: any;
-  public displayWordListBtn = false;
+  public checkLocalStorage = false;
 
   constructor(
     private translatorService: TranslatorService,
@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.appService.getWordFromLocal();
 
     const subscriptionStorage = this.appService.currentStorage$.subscribe(
-      (res) => this.displayWordListBtn = !!res.length);
+      (res) => this.checkLocalStorage = !!res.length);
     this.subscriptions.push(subscriptionStorage);
   }
 
