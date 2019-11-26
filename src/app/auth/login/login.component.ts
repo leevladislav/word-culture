@@ -1,16 +1,56 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {emailPattern, passwordPattern} from '../../app.constans';
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  loginForm: FormGroup;
+  hide = true;
+  errorMessages: any;
+  private subscriptions: Subscription[] = [];
 
-  constructor() {
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService
+  ) {
   }
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [
+        Validators.required,
+        // Validators.pattern(emailPattern)
+      ]],
+      password: ['', [
+        Validators.required,
+        // Validators.minLength(8),
+        // Validators.pattern(passwordPattern)
+      ]]
+    });
   }
 
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions = null;
+  }
+
+  logIn(event) {
+    event.preventDefault();
+    this.errorMessages = null;
+    console.log('logIn');
+
+    if (this.loginForm.invalid) {
+      return this.loginForm.markAllAsTouched();
+    }
+
+    const data = this.loginForm.value;
+
+    this.loginService.checkUser(data);
+  }
 }

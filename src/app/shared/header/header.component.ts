@@ -12,7 +12,7 @@ import {AppService} from '../../app.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  checked = false;
+  darkMode = false;
   private subscriptions: Subscription[] = [];
   public wordResult: {
     word: any
@@ -79,6 +79,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   changeTheme() {
-    this.themeService.setDarkTheme(this.checked);
+    this.themeService.setDarkTheme(this.darkMode);
   }
 }
