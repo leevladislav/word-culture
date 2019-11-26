@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {MyWordsGuard} from './my-words/my-words.guard';
+import {AuthGuard} from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MyWordsGuard} from './my-words/my-words.guard';
     SharedModule
   ],
   providers: [
-    MyWordsGuard
+    MyWordsGuard,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

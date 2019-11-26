@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'my-words',
     loadChildren: () => import('./my-words/my-words.module').then(m => m.MyWordsModule),
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  },
   {path: '**', redirectTo: 'home'}
 ];
 

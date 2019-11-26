@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MyWordsComponent} from './my-words.component';
-import {MyWordsGuard} from './my-words.guard';
+import {AuthComponent} from './auth.component';
+import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: MyWordsComponent,
-    canActivate: [MyWordsGuard]
+    component: AuthComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -16,5 +16,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class MyWordsRoutingModule {
+export class AuthRoutingModule {
 }
