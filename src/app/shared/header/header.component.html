@@ -35,6 +35,13 @@
                 routerLinkActive="active">
           <i class="material-icons">storage</i>
         </button>
+
+        <button *ngIf="checkUser"
+                mat-raised-button
+                (click)="logOut()"
+                matTooltip="Log out">
+          <i class="material-icons">exit_to_app</i>
+        </button>
       </div>
     </div>
   </div>

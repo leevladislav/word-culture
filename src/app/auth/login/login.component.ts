@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         // Validators.pattern(passwordPattern)
       ]]
     });
+
+    this.loginService.checkUser();
   }
 
   ngOnDestroy() {
@@ -43,7 +45,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   logIn(event) {
     event.preventDefault();
     this.errorMessages = null;
-    console.log('logIn');
 
     if (this.loginForm.invalid) {
       return this.loginForm.markAllAsTouched();
@@ -51,6 +52,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const data = this.loginForm.value;
 
-    this.loginService.checkUser(data);
+    this.loginService.saveUser(data);
   }
 }

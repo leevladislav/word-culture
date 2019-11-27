@@ -27,6 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.push(subscriptionTheme);
 
+    this.loginService.checkUser();
+
     const subscriptionUserLogIn = this.loginService.checkUser$.subscribe((res) => {
       this.checkUser = res;
     });

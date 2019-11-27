@@ -35,11 +35,6 @@ export class MyWordCardComponent implements OnInit, OnDestroy {
     this.subscriptions = null;
   }
 
-  editWord(event) {
-    event.preventDefault();
-    console.log('editWord');
-  }
-
   deleteWord(event, wordId) {
     event.preventDefault();
     if (this.modalSubscribe) {

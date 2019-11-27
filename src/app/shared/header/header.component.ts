@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material';
 import {AddWordComponent} from '../modal/add-word/add-word.component';
 import {ThemeService} from '../services/theme.service';
 import {AppService} from '../../app.service';
+import {LoginService} from '../../auth/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +20,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
   modalSubscribe: any;
   public checkLocalStorage = false;
+  public checkUser = false;
 
   constructor(
     private translatorService: TranslatorService,
     public dialog: MatDialog,
     public themeService: ThemeService,
-    public appService: AppService
+    public appService: AppService,
+    public loginService: LoginService
   ) {
 
   }
@@ -42,8 +45,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.appService.getWordFromLocal();
 
     const subscriptionStorage = this.appService.currentStorage$.subscribe(
-      (res) => this.checkLocalStorage = !!res.length);
+      (res) => {
+        this.checkLocalStorage = !!res.length;
+      });
     this.subscriptions.push(subscriptionStorage);
+
+    this.loginService.checkUser();
+
+    const subscriptionUser = this.loginService.checkUser$.subscribe(
+      (res) => {
+        this.checkUser = res;
+      });
+    this.subscriptions.push(subscriptionUser);
   }
 
   ngOnDestroy() {
@@ -80,5 +93,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeTheme() {
     this.themeService.setDarkTheme(this.darkMode);
+  }
+
+  logOut() {
+    this.loginService.removeUser();
   }
 }

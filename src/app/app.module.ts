@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {MyWordsGuard} from './my-words/my-words.guard';
 import {AuthGuard} from './auth/auth.guard';
+import {AppGuard} from './app.guard';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {AuthGuard} from './auth/auth.guard';
     SharedModule
   ],
   providers: [
+    AppGuard,
     MyWordsGuard,
     AuthGuard
   ],
