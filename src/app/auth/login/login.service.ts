@@ -47,14 +47,4 @@ export class LoginService {
       }
     }
   }
-
-  removeUser() {
-    localStorage.setItem('user', '');
-
-    this.checkUser();
-
-    if (!this.userAdded) {
-      this.router.navigate(['auth/login']).then(() => false);
-    }
-  }
 }

@@ -31,6 +31,13 @@ export class AddWordComponent implements OnInit, OnDestroy {
       definition: [''],
       example: [''],
     });
+    // this.addWordForm = this.fb.group({
+    //   word: ['', [Validators.required]],
+    //   type: ['', [Validators.required]],
+    //   pronunciation: ['', [Validators.required]],
+    //   definition: ['', [Validators.required]],
+    //   example: ['', [Validators.required]],
+    // });
   }
 
   ngOnDestroy() {

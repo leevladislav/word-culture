@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
+import {LoginService} from './auth/login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class AppService {
   public allWordKeys = [];
   public maxWordKey;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public loginService: LoginService
+    ) {
   }
 
   getWordFromLocal() {
@@ -80,5 +84,13 @@ export class AppService {
     if (!this.allWords.length) {
       this.router.navigate(['home']).then(() => false);
     }
+  }
+
+  clearStorage() {
+    localStorage.clear();
+
+    this.loginService.checkUser();
+    this.currentStorage$.next([]);
+    this.router.navigate(['auth/login']).then(() => false);
   }
 }
