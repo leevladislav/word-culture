@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {emailPattern, passwordPattern} from '../../app.constans';
 import {LoginService} from './login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   hide = true;
   private subscriptions: Subscription[] = [];
+  public loginMessageError;
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
   }
 
@@ -43,6 +46,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const data = this.loginForm.value;
 
-    this.loginService.saveUser(data);
+    this.loginService.saveUser(data).then(
+      (result) => {
+        this.router.navigate(['home']).then(() => false);
+      },
+      (error) => {
+        this.loginMessageError = error;
+      }
+    );
+
   }
 }

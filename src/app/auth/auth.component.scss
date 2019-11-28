@@ -38,10 +38,18 @@
       form {
         text-align: center;
         max-width: 300px;
+        min-height: 250px;
         margin: 0 auto;
 
         .submit {
           margin-top: 30px;
+        }
+
+        .login-message-error {
+          color: $color-danger;
+          font-size: 12px;
+          letter-spacing: 1px;
+          margin-bottom: 0;
         }
       }
     }

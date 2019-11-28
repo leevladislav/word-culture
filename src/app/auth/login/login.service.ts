@@ -1,29 +1,33 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
   public checkUser$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public userAdded = false;
   private users = [
     {
-      email: 1,
-      password: 11
+      email: 'vladislavLee@gmail.com',
+      password: 'jsdvjJKnj342fdsjk'
     },
     {
-      email: 2,
-      password: 22
+      email: 'userguest@gmail.com',
+      password: 'mmlJu4rndsjl3nlq'
     },
     {
-      email: 3,
-      password: 33
+      email: 'asdlaf@gmail.com',
+      password: 'dsMNnrns0dvii324'
+    },
+    {
+      email: 'bobr@gmail.com',
+      password: '98JJKnk23JnweqeP0'
     },
   ];
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   checkUser() {
@@ -38,13 +42,25 @@ export class LoginService {
   }
 
   saveUser(data) {
-    if (data) {
-      localStorage.setItem('user', JSON.stringify(data));
 
-      this.checkUser();
-      if (this.userAdded) {
-        this.router.navigate(['home']).then(() => false);
-      }
+    if (data) {
+      const promiseSaving = new Promise((resolve, reject) => {
+        const currentUser = this.users.find(
+          (user) => user.email === data.email && user.password === data.password);
+
+        if (currentUser) {
+          localStorage.setItem('user', JSON.stringify(currentUser));
+          this.checkUser();
+
+          if (this.userAdded) {
+            resolve();
+          }
+        }
+
+        reject('Wrong email or password');
+      });
+
+      return promiseSaving;
     }
   }
 }

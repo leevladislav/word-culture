@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
 import {LoginService} from './auth/login/login.service';
+import {ThemeService} from './shared/services/theme.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AppService {
 
   constructor(
     private router: Router,
-    public loginService: LoginService
+    public loginService: LoginService,
+    public themeService: ThemeService,
     ) {
   }
 
@@ -86,11 +88,12 @@ export class AppService {
     }
   }
 
-  clearStorage() {
+  logOut() {
     localStorage.clear();
 
     this.loginService.checkUser();
     this.currentStorage$.next([]);
     this.router.navigate(['auth/login']).then(() => false);
+    this.themeService.setDarkTheme(false);
   }
 }

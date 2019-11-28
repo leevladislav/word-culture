@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.translatorService.getRandomWord();
-
     const subscription = this.translatorService.word$.subscribe((res) => {
       if (res) {
         this.wordResult = res;
@@ -43,7 +42,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription);
 
     this.appService.getWordFromLocal();
-
     const subscriptionStorage = this.appService.currentStorage$.subscribe(
       (res) => {
         this.checkLocalStorage = !!res.length;
@@ -51,7 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscriptionStorage);
 
     this.loginService.checkUser();
-
     const subscriptionUser = this.loginService.checkUser$.subscribe(
       (res) => {
         this.checkUser = res;
@@ -96,6 +93,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logOut() {
-    this.appService.clearStorage();
+    this.appService.logOut();
   }
 }

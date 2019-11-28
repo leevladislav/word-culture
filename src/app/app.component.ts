@@ -22,13 +22,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.themeService.setDarkTheme(this.darkTheme);
     const subscriptionTheme = this.themeService.darkTheme$.subscribe((res) => {
       this.darkTheme = res;
     });
     this.subscriptions.push(subscriptionTheme);
 
     this.loginService.checkUser();
-
     const subscriptionUserLogIn = this.loginService.checkUser$.subscribe((res) => {
       this.checkUser = res;
     });
