@@ -1,6 +1,9 @@
 <form [formGroup]="loginForm" (submit)="logIn($event)">
   <mat-form-field>
     <input id="email" matInput placeholder="Email" formControlName="email">
+    <mat-error>
+      <app-validator-message [field]="loginForm.get('email')"></app-validator-message>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -9,6 +12,9 @@
     <button mat-icon-button matSuffix (click)="hide = !hide" type="button" class="toggle-password">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error>
+      <app-validator-message [field]="loginForm.get('password')"></app-validator-message>
+    </mat-error>
   </mat-form-field>
 
   <button class="submit button-primary"

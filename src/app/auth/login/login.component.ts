@@ -12,7 +12,6 @@ import {LoginService} from './login.service';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   hide = true;
-  errorMessages: any;
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -23,15 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', [
-        Validators.required,
-        // Validators.pattern(emailPattern)
-      ]],
-      password: ['', [
-        Validators.required,
-        // Validators.minLength(8),
-        // Validators.pattern(passwordPattern)
-      ]]
+      email: ['', [Validators.required, Validators.pattern(emailPattern)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(passwordPattern)]]
     });
 
     this.loginService.checkUser();
@@ -44,7 +36,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logIn(event) {
     event.preventDefault();
-    this.errorMessages = null;
 
     if (this.loginForm.invalid) {
       return this.loginForm.markAllAsTouched();

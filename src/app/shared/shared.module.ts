@@ -10,14 +10,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterModule} from '@angular/router';
 import {BtnBackComponent} from './btn-back/btn-back.component';
 import {ConfirmationComponent} from './modal/confirmation/confirmation.component';
-
+import {ValidatorMessageComponent} from './validator-message/validator-message.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     AddWordComponent,
     BtnBackComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ValidatorMessageComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +37,8 @@ import {ConfirmationComponent} from './modal/confirmation/confirmation.component
     AddWordComponent,
     MatCardModule,
     MatTooltipModule,
-    BtnBackComponent
+    BtnBackComponent,
+    ValidatorMessageComponent
   ],
   entryComponents: [
     AddWordComponent,

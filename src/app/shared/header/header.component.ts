@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const subscriptionStorage = this.appService.currentStorage$.subscribe(
       (res) => {
         this.checkLocalStorage = !!res.length;
-        console.log('this.checkLocalStorage');
       });
     this.subscriptions.push(subscriptionStorage);
 

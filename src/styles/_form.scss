@@ -1,5 +1,12 @@
+@import 'variables';
+
 form {
   .mat-form-field {
     width: 100%;
+  }
+
+  .mat-error {
+    color: $color-danger;
+    letter-spacing: 1px;
   }
 }
