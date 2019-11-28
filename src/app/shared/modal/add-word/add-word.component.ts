@@ -26,18 +26,11 @@ export class AddWordComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.addWordForm = this.fb.group({
       word: ['', [Validators.required]],
-      type: [''],
-      pronunciation: [''],
-      definition: [''],
-      example: [''],
+      type: ['', [Validators.required]],
+      pronunciation: ['', [Validators.required]],
+      definition: ['', [Validators.required]],
+      example: ['', [Validators.required]],
     });
-    // this.addWordForm = this.fb.group({
-    //   word: ['', [Validators.required]],
-    //   type: ['', [Validators.required]],
-    //   pronunciation: ['', [Validators.required]],
-    //   definition: ['', [Validators.required]],
-    //   example: ['', [Validators.required]],
-    // });
   }
 
   ngOnDestroy() {
@@ -48,7 +41,9 @@ export class AddWordComponent implements OnInit, OnDestroy {
   addWorld(event) {
     event.preventDefault();
 
-    this.errorMessages = '';
+    if (this.addWordForm.invalid) {
+      return this.addWordForm.markAllAsTouched();
+    }
 
     const data = this.addWordForm.value;
 

@@ -28,6 +28,10 @@ export class ValidatorMessageComponent {
       pattern: 'Invalid',
     };
 
+    if (field.errors.hasOwnProperty('minlength')) {
+      config['minlength'] = `Minimum length ${field.errors.minlength.requiredLength} symbols`;
+    }
+
     Object.keys(field.errors).forEach((error: string) => {
       if (error === 'pattern') {
         const curPattern = field.errors.pattern.requiredPattern;

@@ -12,7 +12,14 @@
     transition: filter 1s;
   }
 
-  ::ng-deep app-my-words {
-    flex-grow: 1;
+  ::ng-deep {
+    app-my-words,
+    app-page-error {
+      flex-grow: 1;
+    }
+
+    app-page-error {
+      display: flex;
+    }
   }
 }

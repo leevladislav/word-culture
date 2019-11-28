@@ -10,26 +10,40 @@
   <form [formGroup]="addWordForm" (submit)="addWorld($event)">
     <mat-form-field>
       <input class="word" id="word" matInput placeholder="word (love)" formControlName="word">
-      <mat-error></mat-error>
+      <mat-error>
+        <app-validator-message [field]="addWordForm.get('word')"></app-validator-message>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input class="type" id="type" matInput placeholder="type (noun)" formControlName="type">
+      <mat-error>
+        <app-validator-message [field]="addWordForm.get('type')"></app-validator-message>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input class="pronunciation" id="pronunciation" matInput
              placeholder="pronunciation (ləv)" formControlName="pronunciation">
+      <mat-error>
+        <app-validator-message [field]="addWordForm.get('pronunciation')"></app-validator-message>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input class="definition" id="definition" matInput
              placeholder="definition (a strong feeling of affection.)" formControlName="definition">
+      <mat-error>
+        <app-validator-message [field]="addWordForm.get('definition')"></app-validator-message>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input class="example" id="example" matInput
              placeholder="example (babies fill parents with intense feelings of love)" formControlName="example">
+      <mat-error>
+        <app-validator-message [field]="addWordForm.get('example')"></app-validator-message>
+      </mat-error>
     </mat-form-field>
 
     <mat-dialog-actions align="center">
