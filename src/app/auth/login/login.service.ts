@@ -39,11 +39,17 @@ export class LoginService {
       this.userAdded = false;
       this.checkUser$.next(this.userAdded);
     }
+
+    return;
+    //  TODO: You can use:
+    this.userAdded = !!savedUser;
+    this.checkUser$.next(this.userAdded);
   }
 
   saveUser(data) {
 
     if (data) {
+      // TODO: Extra Promise. It's sync operation. But it's nice :)
       const promiseSaving = new Promise((resolve, reject) => {
         const currentUser = this.users.find(
           (user) => user.email === data.email && user.password === data.password);

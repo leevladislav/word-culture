@@ -20,9 +20,10 @@ export class AppGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+    // TODO: Extra map.
     const checkUser = this.loginService.checkUser$.pipe(map((res) => res));
 
-    return checkUser.pipe(map((res) => {
+    return this.loginService.checkUser$.pipe(map((res) => {
       if (res) {
         return true;
       }

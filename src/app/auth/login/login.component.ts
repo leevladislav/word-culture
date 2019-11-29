@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       return this.loginForm.markAllAsTouched();
     }
 
+    // TODO: Extra const. Remove const or add in const copy of this.loginForm.value like const data = {...this.loginForm.value};
     const data = this.loginForm.value;
 
     this.loginService.saveUser(data).then(

@@ -19,12 +19,13 @@ export class AppService {
     private router: Router,
     public loginService: LoginService,
     public themeService: ThemeService,
-    ) {
+  ) {
   }
 
   getWordFromLocal() {
     const savedWords = localStorage.getItem('localWords');
 
+    // TODO: Need add try catch because not empty string is true but not valid JSON
     if (savedWords) {
       this.allWords = JSON.parse(savedWords);
       this.currentStorage$.next(this.allWords);
@@ -37,6 +38,7 @@ export class AppService {
     if (this.allWords.length) {
       this.allWordKeys = [];
 
+      // TODO: Use Array.map instead of forEach
       this.allWords.forEach((item) => {
         this.allWordKeys.push(item.id);
       });
