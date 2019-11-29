@@ -26,12 +26,12 @@
 
       .submit {
         margin-left: 20px;
+        color: $color-accent;
       }
 
-      .mat-raised-button[disabled][disabled] {
+      .mat-icon-button[disabled][disabled] {
         opacity: 0.6;
-        background-color: $bg-primary;
-        color: $color-light;
+        color: $color-accent;
       }
 
     }
