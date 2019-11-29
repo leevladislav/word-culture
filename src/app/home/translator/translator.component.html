@@ -8,13 +8,14 @@
 
       <mat-form-field>
         <input class="word" id="word" matInput placeholder="Type the word" formControlName="word">
-        <p class="server-error" *ngIf="errorMessages">{{errorMessages}}</p>
+        <button mat-raised-button
+                matSuffix
+                class="submit button-primary"
+                type="submit"
+                [disabled]="translateForm.invalid">Search</button>
       </mat-form-field>
 
-      <button mat-raised-button
-              class="submit button-primary"
-              type="submit"
-              [disabled]="translateForm.invalid">Search</button>
+      <p class="server-error" *ngIf="errorMessages">{{errorMessages}}</p>
     </form>
   </div>
 
@@ -53,5 +54,4 @@
       </div>
     </div>
   </div>
-
 </div>

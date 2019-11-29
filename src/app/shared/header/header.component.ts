@@ -6,6 +6,7 @@ import {AddWordComponent} from '../modal/add-word/add-word.component';
 import {ThemeService} from '../services/theme.service';
 import {AppService} from '../../app.service';
 import {LoginService} from '../../auth/login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public themeService: ThemeService,
     public appService: AppService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private router: Router
   ) {
 
   }
@@ -82,7 +84,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.modalSubscribe = dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        console.log('res', res);
+        this.router.navigate(['my-words']).then(() => false);
       }
     });
     this.subscriptions.push(this.modalSubscribe);

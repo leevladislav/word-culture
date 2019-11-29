@@ -13,7 +13,6 @@ import {Subscription} from 'rxjs';
 export class AddWordComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   addWordForm: FormGroup;
-  errorMessages: '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

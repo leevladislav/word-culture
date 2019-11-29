@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {BehaviorSubject, Subscription} from 'rxjs';
-import {wordPattern} from '../../app.constans';
+import {Subscription} from 'rxjs';
 import {TranslatorService} from './translator.service';
 
 @Component({
@@ -30,7 +29,7 @@ export class TranslatorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.translateForm = this.fb.group({
-      word: ['', [Validators.pattern(wordPattern)]]
+      word: ['', [Validators.required]]
     });
 
     const subscription = this.translatorService.word$.subscribe((res) => {
@@ -59,11 +58,11 @@ export class TranslatorComponent implements OnInit, OnDestroy {
         }
       },
       (err) => {
+        console.log('err', err);
         if (err.status === 404) {
           this.errorMessages = err.error['0'].message;
           console.log('this.errorMessages', this.errorMessages);
         }
-
       }
     );
 
