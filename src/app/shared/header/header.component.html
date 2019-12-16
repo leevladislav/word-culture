@@ -8,6 +8,11 @@
       </div>
 
       <div class="layout-item header-buttons">
+        <button mat-raised-button
+                matTooltip="Install app on your device">
+          Install as app
+        </button>
+
         <a mat-raised-button
            *ngIf="wordResult?.word"
            matTooltip="Translate on Google"

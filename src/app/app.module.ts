@@ -8,6 +8,8 @@ import {SharedModule} from './shared/shared.module';
 import {MyWordsGuard} from './my-words/my-words.guard';
 import {AuthGuard} from './auth/auth.guard';
 import {AppGuard} from './app.guard';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {AppGuard} from './app.guard';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     AppGuard,

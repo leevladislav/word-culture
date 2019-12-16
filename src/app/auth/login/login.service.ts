@@ -10,8 +10,8 @@ export class LoginService {
   public userAdded = false;
   private users = [
     {
-      email: 'vladislavLee@gmail.com',
-      password: 'jsdvjJKnj342fdsjk'
+      email: 'vladislavlee@gmail.com',
+      password: 'Ln0932389069'
     },
     {
       email: 'userguest@gmail.com',
