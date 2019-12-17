@@ -33,6 +33,10 @@ export class TranslatorService {
   constructor(private http: HttpClient) {
   }
 
+  setExternalTranslate(word) {
+    this.word$.next(word);
+  }
+
   getRandomWord() {
     const randomNumber = Math.floor(Math.random() * this.randomWords.length);
     const randomWord = this.randomWords[randomNumber];
@@ -40,7 +44,7 @@ export class TranslatorService {
     this.translate(randomWord).subscribe(
       (res) => {
         if (res) {
-          this.word$.next(res);
+          this.setExternalTranslate(res);
         }
       },
       (err) => {

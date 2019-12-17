@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ThemeService} from './shared/services/theme.service';
 import {Subscription} from 'rxjs';
 import {LoginService} from './auth/login/login.service';
+import {PwaService} from './shared/services/pwa.service';
 
 @Component({
   selector: 'app-root',

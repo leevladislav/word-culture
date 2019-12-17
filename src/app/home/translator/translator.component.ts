@@ -58,10 +58,8 @@ export class TranslatorComponent implements OnInit, OnDestroy {
         }
       },
       (err) => {
-        console.log('err', err);
         if (err.status === 404) {
           this.errorMessages = err.error['0'].message;
-          console.log('this.errorMessages', this.errorMessages);
         }
       }
     );

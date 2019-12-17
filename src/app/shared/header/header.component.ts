@@ -7,6 +7,7 @@ import {ThemeService} from '../services/theme.service';
 import {AppService} from '../../app.service';
 import {LoginService} from '../../auth/login/login.service';
 import {Router} from '@angular/router';
+import {PwaService} from '../services/pwa.service';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public themeService: ThemeService,
     public appService: AppService,
     public loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private pwaService: PwaService
   ) {
 
   }
@@ -56,6 +58,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.checkUser = res;
       });
     this.subscriptions.push(subscriptionUser);
+
+    this.pwaService.beforeInstallPrompt();
   }
 
   ngOnDestroy() {
@@ -96,5 +100,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logOut() {
     this.appService.logOut();
+  }
+
+  installApp(event) {
+    console.log('button click');
+    this.pwaService.installApp();
   }
 }
