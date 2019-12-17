@@ -3,31 +3,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media screen and (max-width: 768px) {
-      align-items: flex-start;
-    }
+    padding: 20px;
 
     @media screen and (max-width: 500px) {
       flex-direction: column;
     }
 
-    .header-mode {
-      mat-slide-toggle {
-        margin: 20px;
-      }
-    }
-
     .header-buttons {
-
-      @media screen and (max-width: 768px) {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row-reverse;
-      }
-
-      @media screen and (max-width: 500px) {
-        justify-content: center;
+      @media screen and (max-width: 991px) {
+        display: none;
       }
 
       a,
@@ -35,5 +19,15 @@
         margin: 20px;
       }
     }
+
+    .mobile-header-buttons {
+      @media screen and (min-width: 991px) {
+        display: none;
+      }
+    }
   }
+}
+
+.mat-menu-item {
+  text-align: center;
 }

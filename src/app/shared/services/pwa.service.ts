@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {SwUpdate} from '@angular/service-worker';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PwaService {
+  showBtnInstallApp$ = new BehaviorSubject(false);
   deferredPrompt;
 
   constructor(private swUpdate: SwUpdate) {
@@ -14,6 +16,7 @@ export class PwaService {
     window.addEventListener('beforeinstallprompt', (e) => {
       this.deferredPrompt = e;
       console.log('beforeinstallprompt', e);
+      this.showBtnInstallApp$.next(true);
     });
   }
 
@@ -21,6 +24,8 @@ export class PwaService {
   installApp() {
     console.log('installApp service');
     this.deferredPrompt.prompt();
+    this.showBtnInstallApp$.next(false);
+    // this.deferredPrompt = null;
   }
 
   askUserToUpdate() {

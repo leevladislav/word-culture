@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   modalSubscribe: any;
   public checkLocalStorage = false;
   public checkUser = false;
+  showBtnInstallApp = false;
 
   constructor(
     private translatorService: TranslatorService,
@@ -59,7 +60,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
     this.subscriptions.push(subscriptionUser);
 
+    this.displayBtnInstallApp();
+
     this.pwaService.beforeInstallPrompt();
+
+    console.log('showBtnInstallApp', this.showBtnInstallApp);
   }
 
   ngOnDestroy() {
@@ -102,8 +107,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.appService.logOut();
   }
 
-  installApp(event) {
-    console.log('button click');
+  displayBtnInstallApp() {
+    const subscriptionCheckInstallApp = this.pwaService.showBtnInstallApp$.subscribe(
+      (res) => this.showBtnInstallApp = res
+    );
+    console.log('displayBtnInstallApp', this.showBtnInstallApp);
+    this.subscriptions.push(subscriptionCheckInstallApp);
+  }
+
+  installApp() {
     this.pwaService.installApp();
+    this.displayBtnInstallApp();
   }
 }

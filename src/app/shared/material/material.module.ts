@@ -7,6 +7,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -19,6 +22,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatMenuModule,
+    MatCardModule,
+    MatTooltipModule,
   ],
   exports: [
     MatIconModule,
@@ -28,6 +34,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatMenuModule,
+    MatCardModule,
+    MatTooltipModule,
   ]
 })
 export class MaterialModule {
