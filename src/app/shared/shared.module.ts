@@ -6,14 +6,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {HeaderComponent} from './header/header.component';
 import {RouterModule} from '@angular/router';
 import {BtnBackComponent} from './btn-back/btn-back.component';
-import {ConfirmationComponent} from './modal/confirmation/confirmation.component';
 import {ValidatorMessageComponent} from './validator-message/validator-message.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     BtnBackComponent,
-    ConfirmationComponent,
     ValidatorMessageComponent
   ],
   imports: [
@@ -30,9 +28,6 @@ import {ValidatorMessageComponent} from './validator-message/validator-message.c
     HeaderComponent,
     BtnBackComponent,
     ValidatorMessageComponent
-  ],
-  entryComponents: [
-    ConfirmationComponent
   ]
 })
 export class SharedModule {

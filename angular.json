@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "world-culture"
+  "defaultProject": "world-culture",
+  "cli": {
+    "analytics": false
+  }
 }
