@@ -17,7 +17,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     public themeService: ThemeService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private pwaService: PwaService
   ) {
 
   }
@@ -34,6 +35,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.checkUser = res;
     });
     this.subscriptions.push(subscriptionUserLogIn);
+
+    this.pwaService.beforeInstallPrompt();
   }
 
   ngOnDestroy() {

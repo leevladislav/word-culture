@@ -61,10 +61,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscriptionUser);
 
     this.displayBtnInstallApp();
-
-    this.pwaService.beforeInstallPrompt();
-
-    console.log('showBtnInstallApp', this.showBtnInstallApp);
   }
 
   ngOnDestroy() {
@@ -111,7 +107,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const subscriptionCheckInstallApp = this.pwaService.showBtnInstallApp$.subscribe(
       (res) => this.showBtnInstallApp = res
     );
-    console.log('displayBtnInstallApp', this.showBtnInstallApp);
     this.subscriptions.push(subscriptionCheckInstallApp);
   }
 

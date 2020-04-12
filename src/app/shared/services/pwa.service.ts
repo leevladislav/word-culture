@@ -15,17 +15,14 @@ export class PwaService {
   beforeInstallPrompt() {
     window.addEventListener('beforeinstallprompt', (e) => {
       this.deferredPrompt = e;
-      console.log('beforeinstallprompt', e);
       this.showBtnInstallApp$.next(true);
     });
   }
 
 
   installApp() {
-    console.log('installApp service');
     this.deferredPrompt.prompt();
     this.showBtnInstallApp$.next(false);
-    // this.deferredPrompt = null;
   }
 
   askUserToUpdate() {
