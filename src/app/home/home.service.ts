@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 
-export class TranslatorService {
+export class HomeService {
   public word$ = new BehaviorSubject(null);
   public randomWords = [
     'apple',

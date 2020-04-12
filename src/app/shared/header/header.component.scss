@@ -2,24 +2,18 @@
   .header-layout {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px;
 
     .header-buttons {
-      @media screen and (max-width: 991px) {
-        display: none;
-      }
-
-      a,
-      button {
-        margin: 20px;
+      @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
       }
     }
 
-    .mobile-header-buttons {
-      @media screen and (min-width: 991px) {
-        display: none;
-      }
+    a,
+    button,
+    .mat-slide-toggle {
+      margin: 15px;
     }
   }
 }

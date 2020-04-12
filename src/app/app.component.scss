@@ -13,13 +13,9 @@
   }
 
   ::ng-deep {
-    app-my-words,
-    app-page-error {
-      flex-grow: 1;
-    }
-
     app-page-error {
       display: flex;
+      flex-grow: 1;
     }
   }
 }

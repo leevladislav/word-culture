@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ThemeService} from './shared/services/theme.service';
 import {Subscription} from 'rxjs';
-import {LoginService} from './auth/login/login.service';
 import {PwaService} from './shared/services/pwa.service';
 
 @Component({
@@ -12,15 +11,12 @@ import {PwaService} from './shared/services/pwa.service';
 
 export class AppComponent implements OnInit, OnDestroy {
   darkTheme = false;
-  checkUser = false;
   private subscriptions: Subscription[] = [];
 
   constructor(
     public themeService: ThemeService,
-    public loginService: LoginService,
     private pwaService: PwaService
   ) {
-
   }
 
   ngOnInit() {
@@ -29,12 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.darkTheme = res;
     });
     this.subscriptions.push(subscriptionTheme);
-
-    this.loginService.checkUser();
-    const subscriptionUserLogIn = this.loginService.checkUser$.subscribe((res) => {
-      this.checkUser = res;
-    });
-    this.subscriptions.push(subscriptionUserLogIn);
 
     this.pwaService.beforeInstallPrompt();
   }

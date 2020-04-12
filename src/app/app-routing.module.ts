@@ -12,16 +12,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
-    path: 'my-words',
-    loadChildren: () => import('./my-words/my-words.module').then(m => m.MyWordsModule),
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-  },
-  {
     path: '**',
-    loadChildren: () => import('./static-pages/page-error/page-error.module').then(m => m.PageErrorModule),
+    redirectTo: 'home'
   }
 ];
 

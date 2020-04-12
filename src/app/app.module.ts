@@ -5,9 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
-import {MyWordsGuard} from './my-words/my-words.guard';
-import {AuthGuard} from './auth/auth.guard';
-import {AppGuard} from './app.guard';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 
@@ -21,11 +18,6 @@ import {environment} from '../environments/environment';
     BrowserAnimationsModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
-  ],
-  providers: [
-    AppGuard,
-    MyWordsGuard,
-    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

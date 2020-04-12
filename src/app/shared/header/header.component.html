@@ -24,81 +24,10 @@
         </a>
 
         <button mat-raised-button
-                (click)="addWord($event)"
-                matTooltip="Add new word">
-          <i class="material-icons">add</i>
-        </button>
-
-        <button mat-raised-button
                 (click)="getRandomWord()"
                 matTooltip="Get random word">
           <i class="material-icons">cached</i>
         </button>
-
-        <button *ngIf="checkLocalStorage"
-                mat-raised-button
-                matTooltip="My words"
-                [routerLink]="['/my-words']"
-                routerLinkActive="active">
-          <i class="material-icons">storage</i>
-        </button>
-
-        <button *ngIf="checkUser"
-                mat-raised-button
-                (click)="logOut()"
-                matTooltip="Log out">
-          <i class="material-icons">exit_to_app</i>
-        </button>
-      </div>
-
-      <div class="layout-item mobile-header-buttons">
-        <button mat-raised-button [matMenuTriggerFor]="menu">
-          <i class="material-icons">menu</i>
-        </button>
-
-        <mat-menu #menu="matMenu">
-          <button *ngIf="showBtnInstallApp"
-                  mat-menu-item
-                  (click)="installApp()"
-                  matTooltip="Install app on your device">
-            Install as app
-          </button>
-
-          <a mat-menu-item
-             *ngIf="wordResult?.word"
-             matTooltip="Translate on Google"
-             href="https://translate.google.com/?hl=ru#view=home&op=translate&sl=en&tl=ru&text={{wordResult?.word}}"
-             target="_blank">
-            <i class="material-icons">g_translate</i>
-          </a>
-
-          <button mat-menu-item
-                  (click)="addWord($event)"
-                  matTooltip="Add new word">
-            <i class="material-icons">add</i>
-          </button>
-
-          <button mat-menu-item
-                  (click)="getRandomWord()"
-                  matTooltip="Get random word">
-            <i class="material-icons">cached</i>
-          </button>
-
-          <button *ngIf="checkLocalStorage"
-                  mat-menu-item
-                  matTooltip="My words"
-                  [routerLink]="['/my-words']"
-                  routerLinkActive="active">
-            <i class="material-icons">storage</i>
-          </button>
-
-          <button *ngIf="checkUser"
-                  mat-menu-item
-                  (click)="logOut()"
-                  matTooltip="Log out">
-            <i class="material-icons">exit_to_app</i>
-          </button>
-        </mat-menu>
       </div>
     </div>
   </div>
